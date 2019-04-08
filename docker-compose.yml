@@ -7,7 +7,7 @@ services:
     read_only: true
     restart: unless-stopped
     volumes:
-      - ./volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
+      - /srv/mattermost/volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
       - /etc/localtime:/etc/localtime:ro
     environment:
       - POSTGRES_USER=mmuser
@@ -29,11 +29,11 @@ services:
       #   - PGID=1000
     restart: unless-stopped
     volumes:
-      - ./volumes/app/mattermost/config:/mattermost/config:rw
-      - ./volumes/app/mattermost/data:/mattermost/data:rw
-      - ./volumes/app/mattermost/logs:/mattermost/logs:rw
-      - ./volumes/app/mattermost/plugins:/mattermost/plugins:rw
-      - ./volumes/app/mattermost/client-plugins:/mattermost/client/plugins:rw
+      - /srv/mattermost/volumes/app/mattermost/config:/mattermost/config:rw
+      - /srv/mattermost/volumes/app/mattermost/data:/mattermost/data:rw
+      - /srv/mattermost/volumes/app/mattermost/logs:/mattermost/logs:rw
+      - /srv/mattermost/volumes/app/mattermost/plugins:/mattermost/plugins:rw
+      - /srv/mattermost/volumes/app/mattermost/client-plugins:/mattermost/client/plugins:rw
       - /etc/localtime:/etc/localtime:ro
     environment:
       # set same as db credentials and dbname
