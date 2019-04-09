@@ -3,6 +3,7 @@ FROM alpine:3.9
 # Some ENV variables
 ENV PATH="/mattermost/bin:${PATH}"
 ENV MM_VERSION=5.9.0
+ENV STEEDOS_VERSION=5.9.0
 
 # Build argument to set Mattermost edition
 ARG edition=enterprise
@@ -28,7 +29,7 @@ RUN apk add --no-cache \
 RUN mkdir -p /mattermost/data /mattermost/plugins /mattermost/client/plugins \
     && if [ ! -z "$MM_BINARY" ]; then curl $MM_BINARY | tar -xvz ; \
       elif [ "$edition" = "team" ] ; then curl https://releases.mattermost.com/$MM_VERSION/mattermost-team-$MM_VERSION-linux-amd64.tar.gz | tar -xvz ; \
-      else curl https://releases.mattermost.com/$MM_VERSION/mattermost-$MM_VERSION-linux-amd64.tar.gz | tar -xvz ; fi \
+      else curl http://www-steedos-com.oss-cn-beijing.aliyuncs.com/apps/messenger/server/releases/$STEEDOS_VERSION/mattermost-team-$STEEDOS_VERSION-linux-amd64.tar.gz | tar -xvz ; fi \
     && cp /mattermost/config/config.json /config.json.save \
     && rm -rf /mattermost/config/config.json \
     && addgroup -g ${PGID} mattermost \
