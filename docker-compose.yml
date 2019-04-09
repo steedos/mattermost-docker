@@ -4,7 +4,7 @@ services:
 
   db:
     build: db
-    read_only: true
+    # read_only: true
     restart: unless-stopped
     volumes:
       - /srv/mattermost/volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
