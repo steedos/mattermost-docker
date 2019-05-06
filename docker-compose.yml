@@ -6,6 +6,8 @@ services:
     build: db
     # read_only: true
     restart: unless-stopped
+    ports:
+      - "5432:5432"
     volumes:
       - /srv/mattermost/volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
       - /etc/localtime:/etc/localtime:ro
@@ -40,6 +42,7 @@ services:
       - MM_USERNAME=mmuser
       - MM_PASSWORD=mmuser_password
       - MM_DBNAME=mattermost
+      # - DB_HOST=192.168.1.150
       # in case your config is not in default location
       #- MM_CONFIG=/mattermost/config/config.json
 
