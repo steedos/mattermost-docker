@@ -4,6 +4,7 @@ services:
 
   db:
     build: db
+    image: steedos/mattermost-docker_db:1.0
     # read_only: true
     restart: unless-stopped
     ports:
@@ -29,6 +30,7 @@ services:
       #   - edition=team
       #   - PUID=1000
       #   - PGID=1000
+    image: steedos/mattermost-docker_app:1.0
     restart: unless-stopped
     volumes:
       - /srv/mattermost/volumes/app/mattermost/config:/mattermost/config:rw
@@ -48,6 +50,7 @@ services:
 
   web:
     build: web
+    image: steedos/mattermost-docker_web:1.0
     ports:
       - "80:80"
       - "443:443"
