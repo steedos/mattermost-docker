@@ -228,5 +228,5 @@ For the server configurations, see [prod-ubuntu.rst] of Mattermost.
     - chown -R 2000:2000 /srv/mattermost/volumes/app/mattermost/
     - docker pull steedos/mattermost-docker_db:1.0. 还有web
     - systemctl stop firewalld , chkconfig firewalld off, systemctl restart docker
-    - 起服务docker-compose up -d
-    - 停服务docker-compose down
+    - 起服务 cd /srv/git/mattermost-docker  然后 docker-compose up -d
+    - 停服务 cd /srv/git/mattermost-docker  然后 docker-compose down
