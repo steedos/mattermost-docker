@@ -217,3 +217,16 @@ For the server configurations, see [prod-ubuntu.rst] of Mattermost.
 [docker]: http://docs.docker.com/engine/installation/
 [docker-compose]: https://docs.docker.com/compose/install/
 [prod-ubuntu.rst]: https://docs.mattermost.com/install/install-ubuntu-1604.html
+
+
+即时通信服务器部署mattermost：
+- 查看linux内核版本 cat /proc/version；cat /etc/redhat-release
+- 安装docker，docker-compose https://docs.docker.com/
+- 防止空间不足将srv下文件迁移至/home/srv下，创建软连接: cd /; ln -s /home/srv srv;
+- 安装步骤：
+    - mkdir -p /srv/mattermost/volumes/app/mattermost/{data,logs,config,plugins}
+    - chown -R 2000:2000 /srv/mattermost/volumes/app/mattermost/
+    - docker pull steedos/mattermost-docker_db:1.0. 还有web
+    - systemctl stop firewalld , chkconfig firewalld off, systemctl restart docker
+    - 起服务docker-compose up -d
+    - 停服务docker-compose down
