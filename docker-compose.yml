@@ -52,7 +52,7 @@ services:
     build: web
     image: steedos/mattermost-docker_web:1.0
     ports:
-      - "20080:80"
+      - "80:80"
       - "443:443"
     read_only: true
     restart: unless-stopped
